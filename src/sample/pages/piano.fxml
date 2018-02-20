@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="sample.controllers.Piano"
+          prefHeight="400.0" prefWidth="600.0"
+          alignment="center" hgap="10" vgap="10">
+
+    <Group>
+        <Rectangle fx:id="r" layoutX="300" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+        <!-- 340,60,50,130 -->
+        <Rectangle fx:id ="ra" layoutX="340" layoutY="60" width="50" height="130"
+                   fill="black"/>
+        <!-- 361,60,60,200 -->
+        <Rectangle fx:id="r1" layoutX="361" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+        <!-- 400,60,50,130 -->
+        <Rectangle fx:id="r1a" layoutX="400" layoutY="60" width="50" height="130"
+                   fill="black"/>
+        <!-- 421,60,60,200 -->
+        <Rectangle fx:id="r2" layoutX="421" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+        <!-- 461,60,50,130 -->
+        <Rectangle fx:id="r2a" layoutX="461" layoutY="60" width="50" height="130"
+                   fill="black"/>
+        <!-- 483,60,60,200 -->
+        <Rectangle fx:id="r3" layoutX="483" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+        <!-- 524,60,20,130 -->
+        <Rectangle fx:id="r3a" layoutX="524" layoutY="60" width="20" height="130"
+                   fill="black"/>
+        <!-- 545,60,60,200 -->
+        <Rectangle fx:id="r4" layoutX="545" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+        <!-- 584,60,20,130 -->
+        <Rectangle fx:id="r4a" layoutX="584" layoutY="60" width="20" height="130"
+                   fill="black"/>
+
+    </Group>
+
+</GridPane>
