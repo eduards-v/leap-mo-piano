@@ -14,34 +14,46 @@
           alignment="center" hgap="10" vgap="10">
 
     <Group>
-        <Rectangle fx:id="r" layoutX="300" layoutY="60" width="60" height="200"
+        <Rectangle fx:id="a1" layoutX="300" layoutY="60" width="60" height="200"
                    fill="white" stroke="black"/>
         <!-- 340,60,50,130 -->
-        <Rectangle fx:id ="ra" layoutX="340" layoutY="60" width="50" height="130"
+        <Rectangle fx:id ="ab1" layoutX="340" layoutY="60" width="50" height="130"
                    fill="black"/>
         <!-- 361,60,60,200 -->
-        <Rectangle fx:id="r1" layoutX="361" layoutY="60" width="60" height="200"
+        <Rectangle fx:id="b1" layoutX="361" layoutY="60" width="60" height="200"
                    fill="white" stroke="black"/>
-        <!-- 400,60,50,130 -->
-        <Rectangle fx:id="r1a" layoutX="400" layoutY="60" width="50" height="130"
-                   fill="black"/>
         <!-- 421,60,60,200 -->
-        <Rectangle fx:id="r2" layoutX="421" layoutY="60" width="60" height="200"
+        <Rectangle fx:id="c1" layoutX="421" layoutY="60" width="60" height="200"
                    fill="white" stroke="black"/>
         <!-- 461,60,50,130 -->
-        <Rectangle fx:id="r2a" layoutX="461" layoutY="60" width="50" height="130"
+        <Rectangle fx:id="cb1" layoutX="461" layoutY="60" width="50" height="130"
                    fill="black"/>
         <!-- 483,60,60,200 -->
-        <Rectangle fx:id="r3" layoutX="483" layoutY="60" width="60" height="200"
+        <Rectangle fx:id="d1" layoutX="482" layoutY="60" width="60" height="200"
                    fill="white" stroke="black"/>
         <!-- 524,60,20,130 -->
-        <Rectangle fx:id="r3a" layoutX="524" layoutY="60" width="20" height="130"
+        <Rectangle fx:id="db1" layoutX="524" layoutY="60" width="20" height="130"
                    fill="black"/>
         <!-- 545,60,60,200 -->
-        <Rectangle fx:id="r4" layoutX="545" layoutY="60" width="60" height="200"
+        <Rectangle fx:id="e1" layoutX="543" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+
+        <Rectangle fx:id="f1" layoutX="604" layoutY="60" width="60" height="200"
                    fill="white" stroke="black"/>
         <!-- 584,60,20,130 -->
-        <Rectangle fx:id="r4a" layoutX="584" layoutY="60" width="20" height="130"
+        <Rectangle fx:id="fb1" layoutX="646" layoutY="60" width="20" height="130"
+                   fill="black"/>
+
+        <Rectangle fx:id="g1" layoutX="665" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+
+        <Rectangle fx:id="gb1" layoutX="706" layoutY="60" width="20" height="130"
+                   fill="black"/>
+
+        <Rectangle fx:id="a2" layoutX="726" layoutY="60" width="60" height="200"
+                   fill="white" stroke="black"/>
+
+        <Rectangle fx:id="ab2" layoutX="767" layoutY="60" width="20" height="130"
                    fill="black"/>
 
     </Group>
