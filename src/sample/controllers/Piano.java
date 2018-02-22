@@ -31,43 +31,46 @@ public class Piano {
     }
 
     @FXML
-    void initializa(){
+    void initialize(){
         initEvents();
     }
 
     private void initEvents(){
         Map notes = NotesContainer.getInstance().getContainer();
         a1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("a1");
+            AudioClip audio = (AudioClip)notes.get("do_28");
             audio.play();
         });
         b1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("b1");
+            AudioClip audio = (AudioClip)notes.get("re_30");
             audio.play();
         });
         c1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("c1");
+            AudioClip audio = (AudioClip)notes.get("mi_32");
             audio.play();
         });
         d1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("d1");
+            AudioClip audio = (AudioClip)notes.get("fa_33");
             audio.play();
         });
         e1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("e1");
+            AudioClip audio = (AudioClip)notes.get("sol_35");
             audio.play();
         });
         f1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("f1");
+            AudioClip audio = (AudioClip)notes.get("la_37");
             audio.play();
         });
 
         g1.setOnMouseClicked(event -> {
-            AudioClip audio = (AudioClip)notes.get("g1");
+            AudioClip audio = (AudioClip)notes.get("si_39");
             audio.play();
         });
 
-
+        a2.setOnMouseClicked(event -> {
+            AudioClip audio = (AudioClip)notes.get("do_40");
+            audio.play();
+        });
 
 
     }
