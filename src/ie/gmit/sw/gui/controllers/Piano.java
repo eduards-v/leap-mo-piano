@@ -1,10 +1,9 @@
-package sample.controllers;
+package ie.gmit.sw.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.media.AudioClip;
-import javafx.scene.shape.Rectangle;
-import sample.NotesContainer;
+import ie.gmit.sw.resources.NotesContainer;
 
 import java.util.Map;
 

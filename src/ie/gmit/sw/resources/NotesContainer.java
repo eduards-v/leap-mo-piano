@@ -1,7 +1,7 @@
-package sample;
+package ie.gmit.sw.resources;
 
 import javafx.scene.media.AudioClip;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Map;
 
