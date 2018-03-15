@@ -19,8 +19,8 @@ public class Piano {
     @FXML
     void initialize(){
         initEvents();
-
     }
+
 
     private void initEvents(){
         Map notes = NotesContainer.getInstance().getContainer();
