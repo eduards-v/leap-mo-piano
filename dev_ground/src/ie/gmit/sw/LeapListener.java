@@ -53,9 +53,9 @@ public class LeapListener extends Listener{
     private void UpdateFingersUI(float x, float z, int ctr){
 
         Platform.runLater(() -> {
-            UI_Finger ui_finger = hands_ui.getFingers().get(ctr);
-            ui_finger.centerX().set(x);
-            ui_finger.centerY().set(z);
+            FingerView _fingerView = hands_ui.getFingers().get(ctr);
+            _fingerView.centerX().set(x);
+            _fingerView.centerY().set(z);
         });
     }
 

@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class UI_Finger{
+public class FingerView {
 
     private final DoubleProperty centerY =
             new SimpleDoubleProperty(0);
@@ -16,8 +16,8 @@ public class UI_Finger{
 
     private Circle finger;
 
-    public UI_Finger() {
-        finger = new Circle(2);
+    public FingerView() {
+        finger = new Circle(4);
         finger.setFill(Color.GREEN);
 
         finger.translateXProperty().bind(centerX);

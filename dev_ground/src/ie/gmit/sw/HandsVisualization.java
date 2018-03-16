@@ -5,19 +5,19 @@ import java.util.List;
 
 public class HandsVisualization {
 
-    private List<UI_Finger> fingers;
+    private List<FingerView> fingers;
 
     public HandsVisualization() {
 
         fingers = new ArrayList<>();
 
         for(int i = 0; i < 10; i++){
-            UI_Finger finger = new UI_Finger();
+            FingerView finger = new FingerView();
             fingers.add(finger);
         }
     }
 
-    public List<UI_Finger> getFingers() {
+    public List<FingerView> getFingers() {
         return fingers;
     }
 }
