@@ -7,19 +7,19 @@ import java.util.Map;
 
 public class HandsViewController {
 
-    private HandsViewController instance;
+    private static HandsViewController instance;
     private Map<String, HandView> hands;
     private Node root = null;
 
     private HandsViewController() {
         hands = new HashMap<>();
+        hands.put("hand_r", new HandView("hand_r"));
+        hands.put("hand_l", new HandView("hand_l"));
     }
 
-    public HandsViewController getInstance() {
+    public static HandsViewController getInstance() {
         if(instance == null){
           instance = new HandsViewController();
-          hands.put("hand1", new HandView("hand1"));
-          hands.put("hand2", new HandView("hand2"));
         }
         return instance;
     }
@@ -28,5 +28,7 @@ public class HandsViewController {
         this.root = root;
     }
 
-
+    public Map<String, HandView> getHands() {
+        return hands;
+    }
 }
