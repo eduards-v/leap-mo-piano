@@ -13,7 +13,7 @@ import java.util.List;
 public class HandView {
 
     // this is returned to a root
-    private Group hand_view;
+    private List<Node> hand_view;
 
     // represents a palm location
     private Circle palm;
@@ -33,9 +33,10 @@ public class HandView {
     // passing an id for the hand to find it in node graph, i.e., hand1 / hand2
     public HandView(String hand_id) {
 
+        hand_view = new ArrayList<>();
         // create palm indicator
         palm = new Circle(6);
-        palm.setFill(Color.AZURE);
+        palm.setFill(Color.RED);
 
         // bind custom properties that will be changed
         // based on Leap Listener data
@@ -50,18 +51,16 @@ public class HandView {
         }
 
         // add elements to a group that represent a hand
-        hand_view = new Group();
-        hand_view.setId(hand_id); // will be used to find a hand in UI
 
-        hand_view.getChildren().add(palm);
+        hand_view.add(palm);
 
-        fingers.forEach(finger -> hand_view.getChildren().add(finger.getFinger()));
+        fingers.forEach(finger -> hand_view.add(finger.getFinger()));
 
 
     }
 
     // returns full hand
-    public Node getHand_view() {
+    public List<Node> getHand_view() {
         return hand_view;
     }
 

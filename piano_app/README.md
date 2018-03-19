@@ -29,3 +29,9 @@ A piano GUI that can be played with Leap Motion, hands based device to interact 
 * Map tap event from Leap Motion to JavaFX keys events
     * Receive coordinates of tap events and map them 
     to coordinates of keys location
+
+
+## Common issues
+
+* Sometimes need to start/restart Leap Service manually on Windows
+https://support.leapmotion.com/hc/en-us/articles/223782848-How-do-I-restart-Leap-Services-on-Windows-

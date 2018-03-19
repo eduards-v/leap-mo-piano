@@ -12,25 +12,26 @@ public class LeapRunner extends Application {
     private Controller c;
     private Listener l;
 
-    private HandsVisualization ui_hands;
+    private HandsViewController handsViewController = HandsViewController.getInstance();
 
     @Override
     public void start (Stage primaryStage) {
 
-        ui_hands = new HandsVisualization();
         StackPane root = new StackPane();
+        handsViewController.setUiRoot(root);
+        handsViewController.addHandView();
 
-        ui_hands.getFingers()
-                .forEach(ui_finger
-                -> root.getChildren()
-                        .add(ui_finger.getFinger()));
+//        ui_hands.getFingers()
+//                .forEach(ui_finger
+//                -> root.getChildren()
+//                        .add(ui_finger.getFinger()));
 
         System.out.println("Elements count in root: " + root.getChildren().size());
         Scene scene = new Scene(root, 300, 250);
         primaryStage.setScene(scene);
 
         c = new Controller();
-        l = new LeapListener(ui_hands);
+        l = new LeapListener();
         c.addListener (l);
 
 

@@ -20,20 +20,37 @@ public class ListenerDataHandler {
         if(!hands.isEmpty()){
             switch (hands.count()){
                 case 1:
-                       Hand hand = hands.get(0);
-                       if(hand.isRight()){
+                       Hand hand1 = hands.get(0);
+                       if(hand1.isRight()){
                            HandView handView = handsViewController.getHands().get("hand_r");
 
-                           Platform.runLater(() -> {
-                               handlePalmPosition(hand, handView);
-                               handleFingersPosition(hand, handView);
-                           });
+                           handlePalmPosition(hand1, handView);
+                           handleFingersPosition(hand1, handView);
+
                        } else{
                            HandView handView = handsViewController.getHands().get("hand_l");
-
+                           handlePalmPosition(hand1, handView);
+                           handleFingersPosition(hand1, handView);
                        }
                        break;
                 case 2:
+                       int ctr = 0;
+                       HandView handView;
+                       for(Hand hand2 : hands){
+                           switch (ctr){
+                               case 0:
+                                   handView = handsViewController.getHands().get("hand_r");
+                                   handlePalmPosition(hand2, handView);
+                                   handleFingersPosition(hand2, handView);
+                                   ctr++;
+                                   break;
+                               case 1:
+                                   handView = handsViewController.getHands().get("hand_l");
+                                       handlePalmPosition(hand2, handView);
+                                       handleFingersPosition(hand2, handView);
+                                   break;
+                           }
+                       }
                        break;
             }
         }
@@ -41,26 +58,31 @@ public class ListenerDataHandler {
     } // end of handleHandsData
 
     private void handlePalmPosition(Hand hand, HandView handView){
-        float x = hand.palmPosition().getX();
-        float z = hand.palmPosition().getZ();
+        Platform.runLater(() -> {
+            float x = hand.palmPosition().getX();
+            float z = hand.palmPosition().getZ();
 
-        handView.centerX().set(x);
-        handView.centerY().set(z);
+            handView.centerX().set(x);
+            handView.centerY().set(z);
+        });
     }
 
     private void handleFingersPosition(Hand hand, HandView handView){
-        List<FingerView> fingersView = handView.getFingers();
-        int ctr = 0;
-        for (Finger finger : hand.fingers()){
-            float x = finger.tipPosition().getX();
-            float z = finger.tipPosition().getZ();
+        Platform.runLater(() -> {
+            List<FingerView> fingersView = handView.getFingers();
+            int ctr = 0;
 
-            FingerView fingerView = fingersView.get(ctr);
+            for (Finger finger : hand.fingers()){
+                float x = finger.tipPosition().getX();
+                float z = finger.tipPosition().getZ();
 
-            fingerView.centerX().set(x);
-            fingerView.centerY().set(z);
-            ctr++;
-        }
+                FingerView fingerView = fingersView.get(ctr);
+
+                fingerView.centerX().set(x);
+                fingerView.centerY().set(z);
+                ctr++;
+            }
+        });
     }
 
 
