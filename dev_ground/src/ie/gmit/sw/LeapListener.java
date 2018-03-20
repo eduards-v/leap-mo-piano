@@ -10,7 +10,7 @@ public class LeapListener extends Listener{
     private ListenerDataHandler listenerDataHandler;
 
     public LeapListener() {
-        this.listenerDataHandler = new ListenerDataHandler();
+
     }
 
     @Override
@@ -23,7 +23,7 @@ public class LeapListener extends Listener{
     @Override
     public void onFrame(Controller controller) {
 
-        int ctr = 0;
+        listenerDataHandler = new ListenerDataHandler();
         Frame frame = controller.frame();
 
         HandList hands = frame.hands();

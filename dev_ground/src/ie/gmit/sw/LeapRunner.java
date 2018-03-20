@@ -19,7 +19,7 @@ public class LeapRunner extends Application {
 
         StackPane root = new StackPane();
         handsViewController.setUiRoot(root);
-        handsViewController.addHandView();
+        //handsViewController.addHandView();
 
 //        ui_hands.getFingers()
 //                .forEach(ui_finger

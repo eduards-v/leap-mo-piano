@@ -17,44 +17,70 @@ public class ListenerDataHandler {
 
     public void handleHandsData(HandList hands){
 
-        if(!hands.isEmpty()){
-            switch (hands.count()){
-                case 1:
-                       Hand hand1 = hands.get(0);
-                       if(hand1.isRight()){
-                           HandView handView = handsViewController.getHands().get("hand_r");
+        switch (hands.count()){
+            case 1:
+               Hand hand1 = hands.get(0);
+               if(hand1.isRight()){
+                   HandView handView = handsViewController.getHands().get(HandSide.HAND_R);
+                   Platform.runLater(() -> {
+                       handsViewController.addHandView(HandSide.HAND_R);
+                       handsViewController.removeHandView(HandSide.HAND_L);
+                   });
 
-                           handlePalmPosition(hand1, handView);
-                           handleFingersPosition(hand1, handView);
+                   handlePalmPosition(hand1, handView);
+                   handleFingersPosition(hand1, handView);
 
-                       } else{
-                           HandView handView = handsViewController.getHands().get("hand_l");
-                           handlePalmPosition(hand1, handView);
-                           handleFingersPosition(hand1, handView);
-                       }
-                       break;
-                case 2:
-                       int ctr = 0;
-                       HandView handView;
-                       for(Hand hand2 : hands){
-                           switch (ctr){
-                               case 0:
-                                   handView = handsViewController.getHands().get("hand_r");
-                                   handlePalmPosition(hand2, handView);
-                                   handleFingersPosition(hand2, handView);
-                                   ctr++;
-                                   break;
-                               case 1:
-                                   handView = handsViewController.getHands().get("hand_l");
-                                       handlePalmPosition(hand2, handView);
-                                       handleFingersPosition(hand2, handView);
-                                   break;
-                           }
-                       }
-                       break;
-            }
+                   System.out.println("Right Hand HANDLED");
+
+               } else{
+                   HandView handView = handsViewController.getHands().get(HandSide.HAND_L);
+                   Platform.runLater(() -> {
+                       handsViewController.addHandView(HandSide.HAND_L);
+                       handsViewController.removeHandView(HandSide.HAND_R);
+                   });
+
+                   handlePalmPosition(hand1, handView);
+                   handleFingersPosition(hand1, handView);
+                   System.out.println("Left Hand HANDLED");
+               }
+               break;
+            case 2:
+               System.out.println("Handling both hands");
+               int ctr = 0;
+               HandView handView;
+               for(Hand hand2 : hands){
+                   switch (ctr){
+                       case 0:
+                           handView = handsViewController.getHands().get(HandSide.HAND_R);
+
+                           Platform.runLater(() -> handsViewController.addHandView(HandSide.HAND_R));
+
+                           handlePalmPosition(hand2, handView);
+                           handleFingersPosition(hand2, handView);
+                           ctr++;
+                           System.out.println("Right Hand HANDLED");
+                           break;
+                       case 1:
+                           handView = handsViewController.getHands().get(HandSide.HAND_L);
+                           Platform.runLater(() -> handsViewController.addHandView(HandSide.HAND_L));
+
+                           handlePalmPosition(hand2, handView);
+                           handleFingersPosition(hand2, handView);
+
+                           System.out.println("Left Hand HANDLED");
+                           break;
+                   }
+               }
+               break;
+            case 0:
+               System.out.println("No Hands in sensor vision");
+                Platform.runLater(() -> {
+                    handsViewController.removeHandView(HandSide.HAND_R);
+                    handsViewController.removeHandView(HandSide.HAND_L);
+                });
+
+               break;
         }
-
     } // end of handleHandsData
 
     private void handlePalmPosition(Hand hand, HandView handView){

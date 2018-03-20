@@ -4,21 +4,28 @@ import javafx.scene.layout.StackPane;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HandsViewController {
 
     private static HandsViewController instance;
 
     // Nodes that represent hands visualization
-    private Map<String, HandView> hands;
+    private Map<HandSide, HandView> hands;
+    // locks for hands to track presence in UI
+    private AtomicInteger handl, handr;
 
     // Could be any FX node. In this app case it's StackPane.
     private StackPane root = null;
 
     private HandsViewController() {
         hands = new HashMap<>();
-        hands.put("hand_r", new HandView("hand_r"));
-        hands.put("hand_l", new HandView("hand_l"));
+        hands.put(HandSide.HAND_R, new HandView("hand_r"));
+        hands.put(HandSide.HAND_L, new HandView("hand_l"));
+
+        handl = new AtomicInteger(0);
+        handr = new AtomicInteger(0);
+
     }
 
     public static HandsViewController getInstance() {
@@ -34,14 +41,28 @@ public class HandsViewController {
     }
 
     // Hands view access
-    public Map<String, HandView> getHands() {
+    public Map<HandSide, HandView> getHands() {
         return hands;
     }
 
     // Add hand to view
-    public void addHandView(HandView handView){
+    public synchronized void addHandView(HandSide handSide){
+        System.out.println("Adding Hand");
         if(root != null){
-            //root.getChildren().add(handView.getHand_view());
+            switch (handSide){
+                case HAND_R:
+                            if(handr.compareAndSet(0 , 1)) {
+                                root.getChildren().addAll(hands.get(handSide).getHand_view());
+                                System.out.println("Right hand added");
+                            }
+                            break;
+                case HAND_L:
+                            if(handl.compareAndSet(0 , 1)){
+                                root.getChildren().addAll(hands.get(handSide).getHand_view());
+                                System.out.println("Left hand added");
+                            }
+                            break;
+            }
         }
     }
 
@@ -53,9 +74,24 @@ public class HandsViewController {
     }
 
     // Remove hand from view
-    public void removeHandView(HandView handView){
+    public synchronized void removeHandView(HandSide handSide){
         if(root != null){
-            root.getChildren().remove(handView.getHand_view());
+            switch (handSide){
+                case HAND_R:
+                    if(handr.compareAndSet(1, 0)) {
+                        root.getChildren().removeAll(hands.get(handSide).getHand_view());
+                        System.out.println("Right hand removed");
+                    }
+                    break;
+                case HAND_L:
+                    if(handl.compareAndSet(1, 0)){
+                        root.getChildren().removeAll(hands.get(handSide).getHand_view());
+                        System.out.println("Left hand removed");
+                    }
+                    break;
+            }
+
+            //root.getChildren().removeAll(handView.getHand_view());
         }
     }
 

@@ -2,7 +2,6 @@ package ie.gmit.sw;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -30,7 +29,6 @@ public class HandView {
             new SimpleDoubleProperty(6);
 
 
-    // passing an id for the hand to find it in node graph, i.e., hand1 / hand2
     public HandView(String hand_id) {
 
         hand_view = new ArrayList<>();
