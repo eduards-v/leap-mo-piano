@@ -1,23 +1,21 @@
 package ie.gmit.sw;
 
 import com.leapmotion.leap.*;
-import javafx.application.Platform;
-
 
 public class LeapListener extends Listener{
 
 
     private ListenerDataHandler listenerDataHandler;
 
-    public LeapListener() {
-
-    }
-
     @Override
     public void onConnect(Controller controller) {
 
         System.out.println("Connected");
         controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
+        controller.config().setFloat("Gesture.KeyTap.MinDownVelocity", 40.0f);
+        controller.config().setFloat("Gesture.KeyTap.HistorySeconds", .2f);
+        controller.config().setFloat("Gesture.KeyTap.MinDistance", 1.0f);
+        controller.config().save();
     }
 
     @Override
@@ -26,29 +24,29 @@ public class LeapListener extends Listener{
         listenerDataHandler = new ListenerDataHandler();
         Frame frame = controller.frame();
 
+        GestureList gestures = frame.gestures();
+
+        gestures.forEach(gesture -> {
+            if(gesture.type() == KeyTapGesture.classType()){
+                KeyTapGesture keyTap = new KeyTapGesture(gesture);
+                Pointable tappingPointable = keyTap.pointable();
+
+                Vector tapPosition = tappingPointable.tipPosition();
+
+
+                System.out.println("Tap event captured!");
+                System.out.println("Position X: " + tapPosition.getX());
+                System.out.println("Position Y: " + tapPosition.getY());
+                System.out.println("Position Z: " + tapPosition.getZ());
+            }
+        });
+
         HandList hands = frame.hands();
+
 
         listenerDataHandler.handleHandsData(hands);
 
     }
 
-//    private void UpdateFingersUI(float x, float z, int ctr){
-//
-//        Platform.runLater(() -> {
-//            FingerView _fingerView = hands_ui.getFingers().get(ctr);
-//            _fingerView.centerX().set(x);
-//            _fingerView.centerY().set(z);
-//        });
-//    }
-
-
-/*
-* hand.fingers().forEach(finger -> {
-                float x = finger.tipPosition().getX();
-                float y = finger.tipPosition().getY();
-                float z = finger.tipPosition().getZ();
-                UpdateFingersUI(x,y,z);
-            })
-**/
 
 }

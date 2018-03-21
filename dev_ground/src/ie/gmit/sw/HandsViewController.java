@@ -46,20 +46,20 @@ public class HandsViewController {
     }
 
     // Add hand to view
-    public synchronized void addHandView(HandSide handSide){
-        System.out.println("Adding Hand");
+    public void addHandView(HandSide handSide){
+        //System.out.println("Adding Hand");
         if(root != null){
             switch (handSide){
                 case HAND_R:
                             if(handr.compareAndSet(0 , 1)) {
                                 root.getChildren().addAll(hands.get(handSide).getHand_view());
-                                System.out.println("Right hand added");
+                                //wSystem.out.println("Right hand added");
                             }
                             break;
                 case HAND_L:
                             if(handl.compareAndSet(0 , 1)){
                                 root.getChildren().addAll(hands.get(handSide).getHand_view());
-                                System.out.println("Left hand added");
+                                //System.out.println("Left hand added");
                             }
                             break;
             }
@@ -74,19 +74,19 @@ public class HandsViewController {
     }
 
     // Remove hand from view
-    public synchronized void removeHandView(HandSide handSide){
+    public void removeHandView(HandSide handSide){
         if(root != null){
             switch (handSide){
                 case HAND_R:
                     if(handr.compareAndSet(1, 0)) {
                         root.getChildren().removeAll(hands.get(handSide).getHand_view());
-                        System.out.println("Right hand removed");
+                        //System.out.println("Right hand removed");
                     }
                     break;
                 case HAND_L:
                     if(handl.compareAndSet(1, 0)){
                         root.getChildren().removeAll(hands.get(handSide).getHand_view());
-                        System.out.println("Left hand removed");
+                        //System.out.println("Left hand removed");
                     }
                     break;
             }

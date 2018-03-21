@@ -30,7 +30,7 @@ public class ListenerDataHandler {
                    handlePalmPosition(hand1, handView);
                    handleFingersPosition(hand1, handView);
 
-                   System.out.println("Right Hand HANDLED");
+                   //System.out.println("Right Hand HANDLED");
 
                } else{
                    HandView handView = handsViewController.getHands().get(HandSide.HAND_L);
@@ -41,11 +41,11 @@ public class ListenerDataHandler {
 
                    handlePalmPosition(hand1, handView);
                    handleFingersPosition(hand1, handView);
-                   System.out.println("Left Hand HANDLED");
+                   //System.out.println("Left Hand HANDLED");
                }
                break;
             case 2:
-               System.out.println("Handling both hands");
+               //System.out.println("Handling both hands");
                int ctr = 0;
                HandView handView;
                for(Hand hand2 : hands){
@@ -58,7 +58,7 @@ public class ListenerDataHandler {
                            handlePalmPosition(hand2, handView);
                            handleFingersPosition(hand2, handView);
                            ctr++;
-                           System.out.println("Right Hand HANDLED");
+                           //System.out.println("Right Hand HANDLED");
                            break;
                        case 1:
                            handView = handsViewController.getHands().get(HandSide.HAND_L);
@@ -67,13 +67,13 @@ public class ListenerDataHandler {
                            handlePalmPosition(hand2, handView);
                            handleFingersPosition(hand2, handView);
 
-                           System.out.println("Left Hand HANDLED");
+                           //System.out.println("Left Hand HANDLED");
                            break;
                    }
                }
                break;
             case 0:
-               System.out.println("No Hands in sensor vision");
+                //System.out.println("No Hands in sensor vision");
                 Platform.runLater(() -> {
                     handsViewController.removeHandView(HandSide.HAND_R);
                     handsViewController.removeHandView(HandSide.HAND_L);
