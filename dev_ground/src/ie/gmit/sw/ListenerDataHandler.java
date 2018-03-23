@@ -57,6 +57,8 @@ public class ListenerDataHandler {
 
                            handlePalmPosition(hand2, handView);
                            handleFingersPosition(hand2, handView);
+                           //System.out.println("JavaFX palm position: " + handView.getLocationX() + " " + handView.getLocationY());
+
                            ctr++;
                            //System.out.println("Right Hand HANDLED");
                            break;
@@ -87,6 +89,8 @@ public class ListenerDataHandler {
         Platform.runLater(() -> {
             float x = hand.palmPosition().getX();
             float z = hand.palmPosition().getZ();
+
+           //System.out.println("Leap motion palm position: " + x + z);
 
             handView.centerX().set(x);
             handView.centerY().set(z);

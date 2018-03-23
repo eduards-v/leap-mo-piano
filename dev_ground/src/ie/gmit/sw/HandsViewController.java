@@ -6,6 +6,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+/* Singleton Class that controls presence of a hands on a scene.
+* Contains a map with pair of hands view models.
+* Methods:
+*  public void setUiRoot(StackPane root);
+*  - It is required to initially set a root to work with.
+*  Stackpane is used to allow hands to be rendered over other components in scene, like piano
+*  keys, otherwise hands and keys push each other.
+*
+*
+*  public void addHandView(HandSide handSide);
+*  - Adds a single hand view to a scene based on side enum
+*  public void removeHandView(HandSide handSide);
+*  - Removes a single hand view to a scene based on side enum
+*
+*   */
 public class HandsViewController {
 
     private static HandsViewController instance;
@@ -23,6 +39,11 @@ public class HandsViewController {
         hands.put(HandSide.HAND_R, new HandView("hand_r"));
         hands.put(HandSide.HAND_L, new HandView("hand_l"));
 
+        // To track presence of a hands within view of leap motion camera
+        // AtomicInteger class from java concurrent package wraps
+        // values in thread safe manner. Leap motion spawns a new thread
+        // for each frame, so we can save re-rendering time by keeping track
+        // of hands presence
         handl = new AtomicInteger(0);
         handr = new AtomicInteger(0);
 
@@ -66,12 +87,6 @@ public class HandsViewController {
         }
     }
 
-    // Add hand to view
-    public void addHandView(){
-        if(root != null){
-            hands.forEach((s, handView) -> root.getChildren().addAll(handView.getHand_view()));
-        }
-    }
 
     // Remove hand from view
     public void removeHandView(HandSide handSide){

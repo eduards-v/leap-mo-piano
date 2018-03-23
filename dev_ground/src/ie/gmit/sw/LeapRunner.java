@@ -3,15 +3,22 @@ package ie.gmit.sw;
 import com.leapmotion.leap.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sun.font.BidiUtils;
+
+import java.io.IOException;
 
 
 public class LeapRunner extends Application {
@@ -20,27 +27,27 @@ public class LeapRunner extends Application {
     private Listener l;
 
     private HandsViewController handsViewController = HandsViewController.getInstance();
-    private TapGestureController tapGestureController = TapGestureController.getInstance();
 
     @Override
-    public void start (Stage primaryStage) {
+    public void start (Stage primaryStage) throws IOException {
 
-        StackPane root = new StackPane();
-        handsViewController.setUiRoot(root);
-        tapGestureController.setUiRoot(root);
+        Parent root = FXMLLoader.load(getClass().getResource("./PianoLayout.fxml"));
+        //StackPane root = new StackPane();
 
+        Scene scene = new Scene(root, 800, 500);
 
-        System.out.println("Elements count in root: " + root.getChildren().size());
-        Scene scene = new Scene(root, 300, 250);
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
 
+        handsViewController.setUiRoot((StackPane) root);
 
-        root.getChildren().forEach(node -> {
-            Bounds boundsInPatent = node.localToParent(node.getBoundsInLocal());
+//        Bounds boundsInParent = piano.localToScene(piano.getBoundsInLocal());
+//
+//
+//        System.out.println(boundsInParent.getMaxX() + " " + boundsInParent.getMaxY());
+//        System.out.println(boundsInParent.getMinX() + " " + boundsInParent.getMinY());
 
-            System.out.println(boundsInPatent.getMinX() + " " + boundsInPatent.getMinY());
-        });
-
+//        System.out.println(boundsInParent.contains(15, 15));
 
         c = new Controller();
         l = new LeapListener();

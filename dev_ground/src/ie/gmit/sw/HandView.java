@@ -17,6 +17,10 @@ public class HandView {
     // represents a palm location
     private Circle palm;
 
+    public Circle getPalm() {
+        return palm;
+    }
+
     // represents fingers location
     private List<FingerView> fingers;
 
@@ -40,6 +44,7 @@ public class HandView {
         // based on Leap Listener data
         palm.translateXProperty().bind(centerX);
         palm.translateYProperty().bind(centerY);
+
         palm.radiusProperty().bind(radius);
 
         // create 5 fingers
@@ -74,6 +79,14 @@ public class HandView {
 
     public DoubleProperty centerY() {
         return centerY;
+    }
+
+    public double getLocationX(){
+        return palm.getLayoutX();
+    }
+
+    public double getLocationY(){
+        return palm.getLayoutY();
     }
 
     public DoubleProperty radius () {
