@@ -12,11 +12,29 @@
             fx:controller="ie.gmit.sw.PianoLayout"
             prefHeight="400.0" prefWidth="600.0">
     <HBox fx:id="keyboard" style="-fx-alignment: center">
+
         <Button fx:id="do_28" prefWidth="60" prefHeight="200"
                    style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white; "/>
-        <!-- 340,60,50,130 -->
+
         <Button fx:id ="re_30" prefWidth="60" prefHeight="200"
                    style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
 
+        <Button fx:id="mi_32" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="fa_33" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="sol_35" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="la_37" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="si_39" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="do_40" prefWidth="60" prefHeight="200"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
     </HBox>
 </StackPane>

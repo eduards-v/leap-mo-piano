@@ -48,7 +48,6 @@ public class TapGestureListenerImpl implements TapGesturesListener {
     private void notifyObservers(double x, double y) {
         observers.forEach(observer -> {
             observer.captureTapGesture(x, y);
-
         });
     }
 }

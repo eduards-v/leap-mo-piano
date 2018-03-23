@@ -41,14 +41,6 @@ public class LeapRunner extends Application {
 
         handsViewController.setUiRoot((StackPane) root);
 
-//        Bounds boundsInParent = piano.localToScene(piano.getBoundsInLocal());
-//
-//
-//        System.out.println(boundsInParent.getMaxX() + " " + boundsInParent.getMaxY());
-//        System.out.println(boundsInParent.getMinX() + " " + boundsInParent.getMinY());
-
-//        System.out.println(boundsInParent.contains(15, 15));
-
         c = new Controller();
         l = new LeapListener();
         c.addListener (l);
