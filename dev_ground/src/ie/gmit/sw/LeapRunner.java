@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -31,15 +32,19 @@ public class LeapRunner extends Application {
     @Override
     public void start (Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("./PianoLayout.fxml"));
-        //StackPane root = new StackPane();
+        StackPane pianoView = FXMLLoader.load(getClass().getResource("./PianoLayout.fxml"));
+        //StackPane pianoView = new StackPane();
 
-        Scene scene = new Scene(root, 800, 500);
+        BorderPane border = FXMLLoader.load(getClass().getResource("./ApplicationLayout.fxml"));
+
+        border.setCenter(pianoView);
+
+        Scene scene = new Scene(border, 800, 500);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
 
-        handsViewController.setUiRoot((StackPane) root);
+        handsViewController.setUiRoot(pianoView);
 
         c = new Controller();
         l = new LeapListener();

@@ -17,9 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 *
 *
 *  public void addHandView(HandSide handSide);
-*  - Adds a single hand view to a scene based on side enum
+*  - Adds a single hand view to a scene based on hand side enum
 *  public void removeHandView(HandSide handSide);
-*  - Removes a single hand view to a scene based on side enum
+*  - Removes a single hand view to a scene based on hand side enum
 *
 *   */
 public class HandsViewController {

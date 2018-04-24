@@ -1,8 +1,8 @@
 package ie.gmit.sw;
 
 import com.leapmotion.leap.*;
-import ie.gmit.sw.leap.observers.TapGestureListenerImpl;
-import ie.gmit.sw.leap.observers.TapGesturesListener;
+import ie.gmit.sw.leap.observers.taps.TapGestureListenerImpl;
+import ie.gmit.sw.leap.observers.taps.TapGesturesListener;
 
 public class LeapListener extends Listener{
 
@@ -23,7 +23,7 @@ public class LeapListener extends Listener{
         controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
         controller.config().setFloat("Gesture.KeyTap.MinDownVelocity", 40.0f);
         controller.config().setFloat("Gesture.KeyTap.HistorySeconds", .2f);
-        controller.config().setFloat("Gesture.KeyTap.MinDistance", 1.0f);
+        controller.config().setFloat("Gesture.KeyTap.MinDistance", 0.5f);
         controller.config().save();
 
     }
@@ -38,24 +38,7 @@ public class LeapListener extends Listener{
 
         tapGesturesListener.notifyTapGesturePos(gestures);
 
-//        gestures.forEach(gesture -> {
-//            if(gesture.type() == KeyTapGesture.classType()){
-//                KeyTapGesture keyTap = new KeyTapGesture(gesture);
-//
-//                Pointable tappingPointable = keyTap.pointable();
-//
-//                Vector tapPosition = keyTap.position();
-//
-//
-//                System.out.println("Tap event captured!");
-//                System.out.println("Position X: " + tapPosition.getX());
-//                System.out.println("Position Y: " + tapPosition.getY());
-//                System.out.println("Position Z: " + tapPosition.getZ());
-//            }
-//        });
-
         HandList hands = frame.hands();
-
 
         listenerDataHandler.handleHandsData(hands);
 

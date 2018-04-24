@@ -22,6 +22,7 @@ public class ListenerDataHandler {
                Hand hand1 = hands.get(0);
                if(hand1.isRight()){
                    HandView handView = handsViewController.getHands().get(HandSide.HAND_R);
+
                    Platform.runLater(() -> {
                        handsViewController.addHandView(HandSide.HAND_R);
                        handsViewController.removeHandView(HandSide.HAND_L);

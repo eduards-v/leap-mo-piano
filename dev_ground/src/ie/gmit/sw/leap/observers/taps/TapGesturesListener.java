@@ -1,4 +1,4 @@
-package ie.gmit.sw.leap.observers;
+package ie.gmit.sw.leap.observers.taps;
 
 import com.leapmotion.leap.GestureList;
 

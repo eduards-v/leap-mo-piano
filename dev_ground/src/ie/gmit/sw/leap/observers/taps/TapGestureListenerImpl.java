@@ -1,4 +1,4 @@
-package ie.gmit.sw.leap.observers;
+package ie.gmit.sw.leap.observers.taps;
 
 import com.leapmotion.leap.GestureList;
 import com.leapmotion.leap.KeyTapGesture;
@@ -46,8 +46,6 @@ public class TapGestureListenerImpl implements TapGesturesListener {
     }
 
     private void notifyObservers(double x, double y) {
-        observers.forEach(observer -> {
-            observer.captureTapGesture(x, y);
-        });
+        observers.forEach(observer -> observer.captureTapGesture(x, y));
     }
 }

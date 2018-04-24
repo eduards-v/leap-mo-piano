@@ -1,8 +1,8 @@
 package ie.gmit.sw;
 
-import ie.gmit.sw.leap.observers.TapGestureListenerImpl;
-import ie.gmit.sw.leap.observers.TapGesturesListener;
-import ie.gmit.sw.leap.observers.TapGesturesObserver;
+import ie.gmit.sw.leap.observers.taps.TapGestureListenerImpl;
+import ie.gmit.sw.leap.observers.taps.TapGesturesListener;
+import ie.gmit.sw.leap.observers.taps.TapGesturesObserver;
 import ie.gmit.sw.resources.NotesContainer;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
@@ -42,6 +42,7 @@ public class PianoLayout implements TapGesturesObserver {
             });
         });
 
+        // register to be an observer for Leap Motion tap events
         tapGesturesListener.register(this);
     }
 
@@ -60,7 +61,9 @@ public class PianoLayout implements TapGesturesObserver {
             Bounds boundsToScene = btn.localToScene(btn.getBoundsInLocal());
 
             if(boundsToScene.contains(tapX, tapY)){
+
                 btn.fire();
+
             }
 
         });
