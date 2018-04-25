@@ -1,5 +1,6 @@
 package ie.gmit.sw.leap.observers.taps;
 
+import com.leapmotion.leap.Gesture;
 import com.leapmotion.leap.GestureList;
 import com.leapmotion.leap.KeyTapGesture;
 import com.leapmotion.leap.Vector;
@@ -27,7 +28,13 @@ public class TapGestureListenerImpl implements TapGesturesListener {
 
     @Override
     public void notifyTapGesturePos(GestureList gestures) {
-        gestures.forEach(gesture -> {
+
+        double[] xTaps = new double[gestures.count()];
+        double[] yTaps = new double[gestures.count()];
+        int ctr = 0;
+
+        for(Gesture gesture : gestures){
+
             if(gesture.type() == KeyTapGesture.classType()){
                 KeyTapGesture keyTap = new KeyTapGesture(gesture);
 
@@ -40,12 +47,17 @@ public class TapGestureListenerImpl implements TapGesturesListener {
                 Float x = tapPosition.getX();
                 Float y = tapPosition.getZ();
 
-                notifyObservers(new Double(x.toString()), new Double(y.toString()));
+                xTaps[ctr] = new Double(x.toString());
+                yTaps[ctr] = new Double(y.toString());
+
+                ctr++;
             }
-        });
+        }
+
+        notifyObservers(xTaps, yTaps);
     }
 
-    private void notifyObservers(double x, double y) {
-        observers.forEach(observer -> observer.captureTapGesture(x, y));
+    private void notifyObservers(double[] x, double[] y) {
+        observers.forEach(observer -> observer.captureTapGestures(x, y));
     }
 }

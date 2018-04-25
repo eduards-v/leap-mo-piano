@@ -10,7 +10,7 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <top>
-        <TextField prefHeight="20" prefWidth="200" text="Feedback" disable="true"
+        <TextField fx:id="feedBack" prefHeight="20" prefWidth="200" text="Feedback" disable="true"
                    style="-fx-alignment: top-center; -fx-control-inner-background: dodgerblue;
                    -fx-font-size: 22px; -fx-text-fill: black; -fx-font-weight: bold;" />
     </top>

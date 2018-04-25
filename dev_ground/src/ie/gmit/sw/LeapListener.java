@@ -7,8 +7,6 @@ import ie.gmit.sw.leap.observers.taps.TapGesturesListener;
 public class LeapListener extends Listener{
 
 
-    private ListenerDataHandler listenerDataHandler;
-
     private TapGesturesListener tapGesturesListener;
 
 
@@ -31,7 +29,7 @@ public class LeapListener extends Listener{
     @Override
     public void onFrame(Controller controller) {
 
-        listenerDataHandler = new ListenerDataHandler();
+        ListenerDataHandler listenerDataHandler = new ListenerDataHandler();
         Frame frame = controller.frame();
 
         GestureList gestures = frame.gestures();
