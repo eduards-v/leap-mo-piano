@@ -1,21 +1,30 @@
 package ie.gmit.sw;
 
 import ie.gmit.sw.leap.observers.feedback.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 
 public class ApplicationLayout implements FeedbackObserver {
 
 
     @FXML
-    private TextField feedBack;
+    private Text feedBack;
+
+    @FXML
+    private GridPane feedCont;
 
 
     @FXML
     void initialize(){
         // register as feedback observer
         FeedbackListenerImpl.getInstance().register(this);
+        feedCont.setAlignment(Pos.CENTER);
     }
 
     @Override
@@ -28,9 +37,10 @@ public class ApplicationLayout implements FeedbackObserver {
 
         String current = this.feedBack.getText();
         if(current.length() > 50){
-            this.feedBack.setText(feedback);
+            Platform.runLater(() -> this.feedBack.setText(feedback));
         }else{
-            this.feedBack.setText(current.concat(feedback + " - "));
+            Platform.runLater(() -> this.feedBack.setText(current.concat(feedback + " - ")));
+
         }
 
     }

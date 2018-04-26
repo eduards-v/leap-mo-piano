@@ -84,8 +84,6 @@ public class PianoLayout implements TapGesturesObserver {
                 // fire an event
                 btn.fire();
 
-                // return feedback
-
             }
         }
 

@@ -20,7 +20,8 @@ public class FeedbackListenerImpl implements FeedBackListener{
 
     @Override
     public void notifyNewFeedback(char[] keys) {
-        observers.forEach(observer -> observer.updateFeedback(keys));
+        if (keys.length != 0)
+            observers.forEach(observer -> observer.updateFeedback(keys));
     }
 
 

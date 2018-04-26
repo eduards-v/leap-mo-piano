@@ -74,7 +74,7 @@ public class HandsViewController {
                 case HAND_R:
                             if(handr.compareAndSet(0 , 1)) {
                                 root.getChildren().addAll(hands.get(handSide).getHand_view());
-                                //wSystem.out.println("Right hand added");
+                                //System.out.println("Right hand added");
                             }
                             break;
                 case HAND_L:
