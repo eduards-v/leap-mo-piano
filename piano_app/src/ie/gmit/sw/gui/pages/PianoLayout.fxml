@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="rootStackPane"
+            fx:controller="ie.gmit.sw.gui.controllers.PianoLayout"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <HBox fx:id="keyboard" style="-fx-alignment: center">
+
+        <Button fx:id="do_28" prefWidth="60" prefHeight="200" text="C"
+                   style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white; "/>
+
+        <Button fx:id ="re_30" prefWidth="60" prefHeight="200" text="D"
+                   style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="mi_32" prefWidth="60" prefHeight="200" text="E"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="fa_33" prefWidth="60" prefHeight="200" text="F"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="sol_35" prefWidth="60" prefHeight="200" text="G"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="la_37" prefWidth="60" prefHeight="200" text="A"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="si_39" prefWidth="60" prefHeight="200" text="B"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+
+        <Button fx:id="do_40" prefWidth="60" prefHeight="200" text="C"
+                style="-fx-border-color: #000000; -fx-border-width: 1px; -fx-fill: white;"/>
+    </HBox>
+</StackPane>
