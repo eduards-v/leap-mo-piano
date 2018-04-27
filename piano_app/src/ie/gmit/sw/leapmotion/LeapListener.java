@@ -5,6 +5,7 @@ import ie.gmit.sw.leapmotion.handlers.ListenerDataHandler;
 import ie.gmit.sw.leapmotion.observers.gestures.TapGestureListenerImpl;
 import ie.gmit.sw.leapmotion.observers.gestures.TapGesturesListener;
 
+
 public class LeapListener extends Listener {
 
 
@@ -42,6 +43,8 @@ public class LeapListener extends Listener {
         listenerDataHandler.handleHandsData(hands);
 
     }
+
+
 
 
 }
