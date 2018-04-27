@@ -224,10 +224,66 @@ private void handleConcurrentModification(float x, float y, float z){
 
 ### Application Architecture
 
+_Figure 01. Core setup_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_01.PNG)
+
+`LeapRunner` - class containing `main` method. Initializes JavaFX application API by extending `Application` class and overriding `start` method. Withing `start` method, loading FXML resources, setting up Stage and performing other setups that will be discussed later. Constructs `Controller` and `Listener`, and adding listener to the controller.
+
+_Figure 02. Processing Hands Data_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_02.PNG)
+
+`LeapListener` - class receiving frames from controller and passing `HandList` to `ListenerDataHandler` (should rename to HandsDataHandler for better understanding). Keeping listener minimalistic, avoiding references to `Hand` and `FingerList`/`Finger` , delegating work on hands to other class. 
+
+`ListenerDataHandler` - class that processes `HandList` and all other related classes from LeapJava SDK. Based on data from a frame,
+decides which hand should be rendered and removed, if any or both. Updating coordinates of a `HandView` by accessing collection from `HandsViewController` class. Executing `HandsViewController` methods to add or remove hand from a view. 
+ 
+ _Figure 03. Hands View handling_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_03.PNG)
+
+`HandsViewController` - class maintaining collection of `HandView` models. Contains `PianoLayout` node reference for processing oparations like adding and removing hands in UI. Note that `PianoLayout` node reference is passed from `LeapRunner`.
+
+`HandView` - model representing hands view in UI. Consists of UI node representing palm and similar object with collection 
+of fingers nodes called `FingerView`. 
+
+_Figure 04. Binding sound effects to keys_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_04.PNG)
+
+`PianoLayout` - using `NotesContainer` map with audio files to play when corresponding key event is fired. 
+Key is represented by a `Button` node because it can implement any kind of action event on the fly. 
+
+_Figure 05. Observing Key Taps_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_05.PNG)
+
+`PianoLayout` - implements `TapGesturesObserver` interface to receive updates on positions where Key Tap was captured. 
+Based on this knowledge, maps positions to a keys in the view and fires its event, i.e., playing audio file. To receive updates,
+observer has to register with a `TapGesturesListener`.
+
+`TapGestureListenerImpl` - class that implements `TapGesturesListener`. Maintaince a collection of observers that are registered with it to send an updates to when any key tap gestures are captured. `LeapListener` also contains a reference to a `TapGesturesListener` instance to send gestures. `LeapListener` is kept clean from references to an actual gesture types. It only sends relevent parts of a
+frame to a classes that do actual work.
 
 
+_Figure 06. Observing Feedback_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_06.PNG)
+
+`ApplicationLayout` - implements `FeedbackObserver` interface. Waiting for an incoming feedback from `PianoLayout` 
+after all key taps are processed and renders it out to UI. 
+
+`FeedbackListenerImpl` - implements `FeedbackListener`. Scenario is similar to a gesture observation. This time `PianoLayout`
+acts as a propagator of data, sends it by calling instance of `FeedbackListenerImpl` and executing a method. Then observers 
+registered with listener are updated with new feedback. 
 
 
+_Figure 07. Full Architecture_
+
+![](https://github.com/eduards-v/leap-mo-piano/blob/master/uml_diagrams/uml_figure_07.PNG)
+
+I've omitted LeapJava SDK dependencies for clarity of an application design.
 
 
 
