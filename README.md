@@ -286,9 +286,29 @@ _Figure 07. Full Architecture_
 I've omitted LeapJava SDK dependencies for clarity of an application design.
 
 
+### Application Evaluation
 
+Overall performance of an application left much to be desired. What left me really dissapointed is responsivness
+to a key tap events. Leap Motion seems like having troubles with capturing key taps and missing quite a good bit. 
+On the other hand, it could be my missunderstanding of configurations for key taps and would requires further investigation.
 
+As for architecture design, there are few flows in it. An obviouse one would be the way I handle frame data for rendering hands view.
+I would prefer to add another observer to that, but couldn't figure out yet on how to go about it. Main problem is a decision making
+for which hand is in a view, if one, and what to do when both hands on or off the view. Not to mention that Leap Motion can process more
+than 2 hands, altough it's not recommended as it can cause corrupted data per frame. 
+To make design even cleaner, I'd suggest to add data listeners factory to remove references to an implementations from classes 
+that produce data for UI and feed listeners. 
 
+What could make an app really cool is to add a feedback in form of a notepad with notes placed on it. In this case, feedback observer and listener would require redesign to work with different types of parameters. Piano key ids would come in handy here to map with 
+corresponding notes. I still can't figure out how to build a view for such notepad, as it would not be just an ordinary matrix or a grid.
+
+### Conclusion
+
+Developing with Leap Motion was sure fun. It seems easy to get all the data from Leap Motion sensors, but it is a steep learning
+curve to build a rich UI with many functionalities, as it requires good understanding of design patterns and graphics development. 
+For one person project it is tough. 
+
+For more of an interesting project with Leap Motion and piano, I would recommend to use Augmented Reality with headsets like Oculus Rift or HTC Vive. Developing complex VR with rich graphics would be much easier with Unity rather than JavaFX, altough possible with both.
 
 
 
